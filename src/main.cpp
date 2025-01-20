@@ -1,9 +1,9 @@
 #include <Arduino.h>
 
 // Définition des pins pour la LED RGB
-#define RED_PIN 9
-#define GREEN_PIN 10
-#define BLUE_PIN 11
+#define RED_PIN A2
+#define GREEN_PIN A1
+#define BLUE_PIN A0
 
 // Structure pour les couleurs RGB
 struct RGBColor {
