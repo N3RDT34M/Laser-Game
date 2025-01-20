@@ -1,10 +1,9 @@
 #include <Arduino.h>
 
 // Définition des pins pour la LED RGB
-#define RED_PIN 9
-#define GREEN_PIN 10
-#define BLUE_PIN 11
-#define COMMON_PIN 12
+#define RED_PIN 2
+#define GREEN_PIN 3
+#define BLUE_PIN 4
 
 // Structure pour les couleurs RGB
 struct RGBColor {
@@ -14,25 +13,23 @@ struct RGBColor {
 };
 
 // Variables globales
-RGBColor storedColor = {255, 0, 0}; // Couleur par défaut (rouge)
-bool isLedOn = false;
+RGBColor storedColor = {0, 255, 255};
+bool isLedOn = true;
 
-// Initialisation de la LED
+// Initialisation des pins RGB
 void initRGBLed() {
     pinMode(RED_PIN, OUTPUT);
     pinMode(GREEN_PIN, OUTPUT);
     pinMode(BLUE_PIN, OUTPUT);
-    pinMode(COMMON_PIN, OUTPUT);
-    
-    digitalWrite(COMMON_PIN, HIGH);
+
     turnOffRGB();
 }
 
 // Fonction pour changer la couleur
 void setRGBColor(RGBColor color) {
-    storedColor = color; // Sauvegarde la nouvelle couleur
+    storedColor = color;
     if (isLedOn) {
-        // Applique la couleur seulement si la LED est allumée
+        // Inverse les valeurs pour anode commune (0=allumé, 255=éteint)
         analogWrite(RED_PIN, 255 - color.red);
         analogWrite(GREEN_PIN, 255 - color.green);
         analogWrite(BLUE_PIN, 255 - color.blue);
@@ -41,9 +38,9 @@ void setRGBColor(RGBColor color) {
 
 // Éteindre la LED
 void turnOffRGB() {
-    digitalWrite(RED_PIN, HIGH);
-    digitalWrite(GREEN_PIN, HIGH);
-    digitalWrite(BLUE_PIN, HIGH);
+    analogWrite(RED_PIN, 255); // HIGH pour éteindre en anode commune
+    analogWrite(GREEN_PIN, 255);
+    analogWrite(BLUE_PIN, 255);
 }
 
 // Fonction pour allumer/éteindre la LED
@@ -59,25 +56,25 @@ void switchOnOff() {
 }
 
 void setup() {
-    initRGBLed();
+    initRGBLed();  // Configure les pins en OUTPUT
     Serial.begin(9600);
+    setRGBColor(storedColor);
 }
 
 void loop() {
-    // Exemple d'utilisation
-    if (Serial.available() > 0) {
-        char cmd = Serial.read();
-        if (cmd == 's') {
-            switchOnOff(); // Bascule ON/OFF quand 's' est reçu
-        }
-        else if (cmd == 'r') {
-            setRGBColor({255, 0, 0}); // Rouge
-        }
-        else if (cmd == 'g') {
-            setRGBColor({0, 255, 0}); // Vert
-        }
-        else if (cmd == 'b') {
-            setRGBColor({0, 0, 255}); // Bleu
-        }
-    }
+  char cmd = Serial.read();
+  switch(cmd) {
+      case 's':
+          switchOnOff();
+          break;
+      case 'r':
+          setRGBColor({255,0, 0}); // Rouge (inversé dans setRGBColor)
+          break;
+      case 'g':
+          setRGBColor({0, 255, 0}); // Vert
+          break;
+      case 'b':
+          setRGBColor({0, 0, 255}); // Bleu
+          break;
+  }
 }
