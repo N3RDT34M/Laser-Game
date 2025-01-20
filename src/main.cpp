@@ -1,9 +1,9 @@
 #include <Arduino.h>
 
 // Définition des pins pour la LED RGB
-#define RED_PIN A2
-#define GREEN_PIN A1
-#define BLUE_PIN A0
+#define RED_PIN 9
+#define GREEN_PIN 10
+#define BLUE_PIN 11
 
 // Structure pour les couleurs RGB
 struct RGBColor {
@@ -13,10 +13,10 @@ struct RGBColor {
 };
 
 // Variables globales
-RGBColor storedColor = {255, 0, 0}; // Couleur par défaut (rouge)
-bool isLedOn = true; // LED allumée par défaut
+RGBColor storedColor = {0, 255, 255};
+bool isLedOn = true;
 
-// Initialisation de la LED
+// Initialisation des pins RGB
 void initRGBLed() {
     pinMode(RED_PIN, OUTPUT);
     pinMode(GREEN_PIN, OUTPUT);
@@ -25,20 +25,20 @@ void initRGBLed() {
 
 // Fonction pour changer la couleur
 void setRGBColor(RGBColor color) {
-    storedColor = color; // Sauvegarde la nouvelle couleur
+    storedColor = color;
     if (isLedOn) {
-        // Applique la couleur directement aux pins
-        analogWrite(RED_PIN, color.red);
-        analogWrite(GREEN_PIN, color.green);
-        analogWrite(BLUE_PIN, color.blue);
+        // Inverse les valeurs pour anode commune (0=allumé, 255=éteint)
+        analogWrite(RED_PIN, 255 - color.red);
+        analogWrite(GREEN_PIN, 255 - color.green);
+        analogWrite(BLUE_PIN, 255 - color.blue);
     }
 }
 
 // Éteindre la LED
 void turnOffRGB() {
-    analogWrite(RED_PIN, 0);
-    analogWrite(GREEN_PIN, 0);
-    analogWrite(BLUE_PIN, 0);
+    analogWrite(RED_PIN, 255); // HIGH pour éteindre en anode commune
+    analogWrite(GREEN_PIN, 255);
+    analogWrite(BLUE_PIN, 255);
 }
 
 // Fonction pour allumer/éteindre la LED
@@ -54,9 +54,8 @@ void switchOnOff() {
 }
 
 void setup() {
-    initRGBLed();
+    initRGBLed();  // Configure les pins en OUTPUT
     Serial.begin(9600);
-    // Allume la LED avec la couleur par défaut au démarrage
     setRGBColor(storedColor);
 }
 
@@ -65,10 +64,10 @@ void loop() {
         char cmd = Serial.read();
         switch(cmd) {
             case 's':
-                switchOnOff(); // Bascule ON/OFF
+                switchOnOff();
                 break;
             case 'r':
-                setRGBColor({255, 0, 0}); // Rouge
+                setRGBColor({255, 0, 0}); // Rouge (inversé dans setRGBColor)
                 break;
             case 'g':
                 setRGBColor({0, 255, 0}); // Vert
