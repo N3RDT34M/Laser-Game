@@ -4,7 +4,6 @@
 #define RED_PIN 9
 #define GREEN_PIN 10
 #define BLUE_PIN 11
-#define COMMON_PIN 12
 
 // Structure pour les couleurs RGB
 struct RGBColor {
@@ -15,35 +14,31 @@ struct RGBColor {
 
 // Variables globales
 RGBColor storedColor = {255, 0, 0}; // Couleur par défaut (rouge)
-bool isLedOn = false;
+bool isLedOn = true; // LED allumée par défaut
 
 // Initialisation de la LED
 void initRGBLed() {
     pinMode(RED_PIN, OUTPUT);
     pinMode(GREEN_PIN, OUTPUT);
     pinMode(BLUE_PIN, OUTPUT);
-    pinMode(COMMON_PIN, OUTPUT);
-    
-    digitalWrite(COMMON_PIN, HIGH);
-    turnOffRGB();
 }
 
 // Fonction pour changer la couleur
 void setRGBColor(RGBColor color) {
     storedColor = color; // Sauvegarde la nouvelle couleur
     if (isLedOn) {
-        // Applique la couleur seulement si la LED est allumée
-        analogWrite(RED_PIN, 255 - color.red);
-        analogWrite(GREEN_PIN, 255 - color.green);
-        analogWrite(BLUE_PIN, 255 - color.blue);
+        // Applique la couleur directement aux pins
+        analogWrite(RED_PIN, color.red);
+        analogWrite(GREEN_PIN, color.green);
+        analogWrite(BLUE_PIN, color.blue);
     }
 }
 
 // Éteindre la LED
 void turnOffRGB() {
-    digitalWrite(RED_PIN, HIGH);
-    digitalWrite(GREEN_PIN, HIGH);
-    digitalWrite(BLUE_PIN, HIGH);
+    analogWrite(RED_PIN, 0);
+    analogWrite(GREEN_PIN, 0);
+    analogWrite(BLUE_PIN, 0);
 }
 
 // Fonction pour allumer/éteindre la LED
@@ -61,23 +56,26 @@ void switchOnOff() {
 void setup() {
     initRGBLed();
     Serial.begin(9600);
+    // Allume la LED avec la couleur par défaut au démarrage
+    setRGBColor(storedColor);
 }
 
 void loop() {
-    // Exemple d'utilisation
     if (Serial.available() > 0) {
         char cmd = Serial.read();
-        if (cmd == 's') {
-            switchOnOff(); // Bascule ON/OFF quand 's' est reçu
-        }
-        else if (cmd == 'r') {
-            setRGBColor({255, 0, 0}); // Rouge
-        }
-        else if (cmd == 'g') {
-            setRGBColor({0, 255, 0}); // Vert
-        }
-        else if (cmd == 'b') {
-            setRGBColor({0, 0, 255}); // Bleu
+        switch(cmd) {
+            case 's':
+                switchOnOff(); // Bascule ON/OFF
+                break;
+            case 'r':
+                setRGBColor({255, 0, 0}); // Rouge
+                break;
+            case 'g':
+                setRGBColor({0, 255, 0}); // Vert
+                break;
+            case 'b':
+                setRGBColor({0, 0, 255}); // Bleu
+                break;
         }
     }
 }
