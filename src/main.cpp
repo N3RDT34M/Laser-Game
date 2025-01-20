@@ -1,9 +1,9 @@
 #include <Arduino.h>
 
 // Définition des pins pour la LED RGB
-#define RED_PIN 9
-#define GREEN_PIN 10
-#define BLUE_PIN 11
+#define RED_PIN 2
+#define GREEN_PIN 3
+#define BLUE_PIN 4
 
 // Structure pour les couleurs RGB
 struct RGBColor {
@@ -21,6 +21,8 @@ void initRGBLed() {
     pinMode(RED_PIN, OUTPUT);
     pinMode(GREEN_PIN, OUTPUT);
     pinMode(BLUE_PIN, OUTPUT);
+
+    turnOffRGB();
 }
 
 // Fonction pour changer la couleur
@@ -60,21 +62,19 @@ void setup() {
 }
 
 void loop() {
-    if (Serial.available() > 0) {
-        char cmd = Serial.read();
-        switch(cmd) {
-            case 's':
-                switchOnOff();
-                break;
-            case 'r':
-                setRGBColor({255, 0, 0}); // Rouge (inversé dans setRGBColor)
-                break;
-            case 'g':
-                setRGBColor({0, 255, 0}); // Vert
-                break;
-            case 'b':
-                setRGBColor({0, 0, 255}); // Bleu
-                break;
-        }
-    }
+  char cmd = Serial.read();
+  switch(cmd) {
+      case 's':
+          switchOnOff();
+          break;
+      case 'r':
+          setRGBColor({255,0, 0}); // Rouge (inversé dans setRGBColor)
+          break;
+      case 'g':
+          setRGBColor({0, 255, 0}); // Vert
+          break;
+      case 'b':
+          setRGBColor({0, 0, 255}); // Bleu
+          break;
+  }
 }
