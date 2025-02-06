@@ -1,0 +1,106 @@
+Pour chaque classe il y a 10 fichiers audio
+
+001.mp3 --> Lancement de la partie
+002.mp3 --> Activation de l'ulti
+003.mp3 --> Activation impossible
+004.mp3 -->	Désactivation de l'arme par l'immortel
+005.mp3 --> Mort (1 fois sur 3)
+
+Il y a 6 dossiers, un pour chaque classe :
+
+001 --> Bourin
+002 --> Ninja
+003 --> Eclaireur
+004 --> Cyber-Gnome
+005 --> Taupe
+006 --> Immortel
+
+Personnalité des assistants vocaux	
+	
+L'immortel :
+l'IA est fan de son joueur
+001 : C'est toi la star de l'arène, hahaha (admirative)
+002 : L'immortel, le guerrier le plus solide, tu vas tous les zigouller ! (comme un enfant qui jouerait avec une figurine de l'"immortel", à la fin il y a un ton de puissance)
+003 : Désolé, ton ultime n'est pas encore prêt ! (elle s'excuse un peu )
+004 : Ils m'on piraté !!! Ton arme est désactivée !!!! (Elle s'inquiète réélement pour l'"immortel")
+005 : L'immortel !!!! NOOOOOOOOOOnnn !! (Le meme ton que quand en tant qu'enfant tu découvres que tes parents ne sont pas omniscients)
+006 : (bouclier brisé), l'immortel, ton bouclier est désactivé !! (peur)
+
+Le bourin :
+L'IA est une sorte de gobelin, avec la personnalité des hyènes du roi lyon, il est en conflit avec le joueur qui est un peu dumbass aussi (le joueur est aussi une hyène du roi lyon dans le lore)
+001 : Allez !! taches de ne pas tout gâcher cette fois ! (la dernière fois, qu'il est rentré à la base, le boss les a grondé car ils ont échoué, il a un peu peur de se faire gronder à nouveau)
+002 : Alllez !! Allez ! Fonces dans l'tas (Il sent que si l'attaque réussie, il sera enfin excusé auprès de son boss)
+003 : Idiot, on ne peut pas encore activer ça (Il a peur, il est résolu à se faire punir par le boss)
+004 : A couvert ! l'arme est désactivée !!! (Stress)
+005 : Non !!! (larmoyant) vite, relève toi avant que le boss ne voit ça !!
+
+Le ninja :
+Un vrai professionel ! Un espion imperturbable
+001 : Une nouvelle journée commence, je haie ce job (résolu à affronter ce qui fait désormais partie de son quotidien)
+002 : Compétence activée ! A toi d'jouer (Comme si il était un peu fier d'avoir préparé le terrain pour le joueur)
+003 : Désolé, il va falloir patienter encore un peu (comme si il était en train de travailler pour préparer le terrain)
+004 : Fichu pirate, l'arme est désactivé ! (Il reste calme et objectif, légérement énervé, il vient délivrer une information)
+005 : Courage ! La prochaine fois sera la bonne ! (Optimiste, en mode coach professionnel)
+
+L'éclaireur :
+J'imagine ce narrateur comme un mec un peu stylé, avec de l'argent, dans un look un peu vampire médiéval "je vais prendre soin de mes invités"
+001 : La foule est venue nombreuse, il est l'heure de s'AMUSER !! (Comme un maitre de soirée)
+002 : Mesdames, messieurs. C'est l'heure du bouquet final !! (Il a l'air bienveillant du coup c'est terrifiant)
+003 : Le moment n'est pas encore venu !! (il est un peu énervé, pourquoi les gens sont si préssés)
+004 : Arme désactivée !!! Il va falloir se cacher un moment... 
+005 : OH... non !! C'est tellement moins amusant sans toi !! (Au début il a un ton en mode "c'est regrétable")
+006 : L'espion ennemi ne peut pas être localisé, attends un peu. (professionnel)
+
+La taupe :
+Son assistant est une sorte de sorcière un peu fourbe, et surexitée !
+001 : La partie commence ! Tout les coups sont permis !
+002 : Changement de couleur ! Ahahahahahaha
+003 : Patience... patience... ahahahahahaha
+004 : attention ! ton arme est désactivée.
+005 : la vie fait partie de la mort (en mode dark, +40 000 aura)
+
+Le cyber-gnome :
+C'est un gnome, il est cyber
+001 : Sens tu cette douce odeur de panique imminente ?
+002 : C'est l'heure de jouer à chat !! (sadique)
+003 : je ne suis pas encore prêt, compagnon
+004 : Arme désactivée ! Caches toi !! (avec une voie de gnome, le gnome a l'air faible et vulnérable)
+005 : Un gnome tombe, un gnome sort de l'ombre pour prendre sa place 
+	
+Game master :
+001 : La taupe ennemie a activé son ultime !
+002 : Le ninja ennemi a activé son ultime !
+003 : L'éclaireur ennemi a activé son ultime !
+004 : Le cyber-gnome ennemi a activé son ultime !
+005 : L'immortel a activé son ultime !
+006 : Le bourin a activé son ultime !
+
+007 : Bruit de l'arme (pioupiou)
+008 : Bruit de l'arme (surchauffe à 70%)
+009 : Bruit de l'arme (surchauffe complète)
+
+10: Un ennemi est légendaire
+
+11 : 6 secondes avant désactivation de l'arme
+12 : 4
+13 : 3
+14 : 2
+15 : 1
+--> Ensuite, le gilet est désactivé et c'est l'assistant vocal qui dit au joueur de courrir
+
+16 : Alarme de l'éclaireur
+
+17 : Début de la partie dans 10 seconde !
+18 : Plus que 10 minutes !
+19 ! Plus que 5 minutes !
+
+20 : Vous avez trouvé la taupe !
+21 : Vous avez tué votre propre taupe !
+
+22 : Bouclier désactivé !
+23 : Cet ennemi a un bouclier !
+
+24 : Bruit en mode "hein hein" qui veut dire la mort du joueur
+25 : Bruit en mode "di ding" qui veut dire que le joueur a respawn 
+
+26 : Un alié est légendaire
